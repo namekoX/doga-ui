@@ -113,24 +113,3 @@ export function formatDateYYYYMMhhmmss(date: Date) {
             + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
     }
 }
-
-
-/**
- * 現在のURLから記事のIDを取得する。
- * @return 記事のID
- */
- export function getIdByUrlPrams() {
-    let urlParamStr = window.location.search
-
-    if (urlParamStr) {
-        urlParamStr = urlParamStr.substring(1)
-        let params = urlParamStr.split('&');
-        for (let i = 0; i < params.length; i++) {
-            const temp = params[i].split('=')
-            // URLパラメータがConst.PRAM_KEY_IDで定義しているキーの時、その値を返却
-            if (temp[0] === Const.PRAM_KEY_ID) return decodeURI(temp[1]);
-        }
-    }
-    // 取得できない場合は空文字
-    return '';
-}
